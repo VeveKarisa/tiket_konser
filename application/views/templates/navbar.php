@@ -20,6 +20,9 @@
                         <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Partnership</a>
                     </li>
                     <li>
+                        <a href="<?= base_url('Admin') ?>" class="block py-2 px-3 text-white hover:text-slate-300">Dashboard</a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('Auth/Register') ?>" class="block py-2 px-3 text-white hover:text-slate-300">Register</a>
                     </li>
                 </ul>
