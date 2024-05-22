@@ -11,19 +11,16 @@
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-                    <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Home</a>
+                    <a href="<?= base_url('Home') ?>" class="block py-2 px-3 text-white hover:text-slate-300">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">About</a>
+                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Line Up</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Services</a>
+                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Partnership</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-white hover:text-slate-300">Contact</a>
+                        <a href="<?= base_url('Auth/Register') ?>" class="block py-2 px-3 text-white hover:text-slate-300">Register</a>
                     </li>
                 </ul>
             </div>
