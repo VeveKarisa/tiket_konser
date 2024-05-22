@@ -60,4 +60,12 @@ class Auth extends CI_Controller
 			redirect(base_url('auth/'));
 		}
 	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('access_token');
+		$this->session->unset_userdata('user_data');
+		$this->session->sess_destroy();
+		redirect('Home');
+	}
 }
