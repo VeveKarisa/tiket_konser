@@ -27,23 +27,23 @@
                                 </button>
                             </div>
                             <!-- Modal body -->
-                            <form class="p-4 md:p-5">
+                            <form action="" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
                                 <div class="grid gap-4 mb-4 grid-cols-2">
                                     <div class="col-span-2">
                                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Concert Theme</label>
                                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type product name" required="">
                                     </div>
                                     <div class="col-span-2">
-                                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue</label>
-                                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
+                                        <label for="venue" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue</label>
+                                        <input type="text" name="venue" id="venue" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
                                     </div>
                                     <div class="col-span-2">
-                                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-                                        <input type="date" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
+                                        <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                                        <input type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Flyer Upload <span class="text-sm text-red-500">*should in 1:1 size</span></label>
+                                    <label for="flyer_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Flyer Upload <span class="text-sm text-red-500">*should in 1:1 size</span></label>
                                     <div class="flex items-center justify-center w-full">
                                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                                             <div class="h-full w-full text-center flex flex-col justify-center items-center  ">
@@ -52,7 +52,7 @@
                                                 </div>
                                                 <p class="pointer-none text-gray-500 ">Drag and drop files here from your computer</p>
                                             </div>
-                                            <input type="file" class="hidden">
+                                            <input type="file" name="flyer_img" accept="image/*" class="">
                                         </label>
                                     </div>
                                     <p class="text-sm text-gray-500">
@@ -60,7 +60,7 @@
                                     </p>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seats Map Upload</label>
+                                    <label for="seat_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seats Map Upload</label>
                                     <div class="flex items-center justify-center w-full">
                                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                                             <div class="h-full w-full text-center flex flex-col justify-center items-center  ">
@@ -69,7 +69,7 @@
                                                 </div>
                                                 <p class="pointer-none text-gray-500 ">Drag and drop files here from your computer</p>
                                             </div>
-                                            <input type="file" class="hidden">
+                                            <input type="file" name="seat_img" accept="image/*" class="">
                                         </label>
                                     </div>
                                     <p class="text-sm text-gray-500">
@@ -87,19 +87,19 @@
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Number <span class="text-sm text-red-500">*make sure you upload rigt number</span></label>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank</label>
-                                    <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                                    <label for="bank_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank</label>
+                                    <select name="bank_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                                         <option value="" disabled selected>Choose Your Bank</option>
-                                        <option value="">BNI</option>
-                                        <option value="">BCA</option>
-                                        <option value="">MANDIRI</option>
+                                        <option value="BNI">BNI</option>
+                                        <option value="BCA">BCA</option>
+                                        <option value="MANDIRI">MANDIRI</option>
                                     </select>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank Number</label>
-                                    <input type="number" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
+                                    <label for="bank_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank Number</label>
+                                    <input type="number" name="bank_number" id="bank_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
                                 </div>
-                                <button type="submit" class="text-white inline-flex items-center bg-purple-500 hover:bg-purple-600 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                <button type="submit" name="submit" class="text-white inline-flex items-center bg-purple-500 hover:bg-purple-600 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Add Concert
                                 </button>
                             </form>
