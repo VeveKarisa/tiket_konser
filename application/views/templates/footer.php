@@ -5,3 +5,13 @@
         <button class="mt-4 bg-white text-cyan-600 rounded-lg px-4 py-2">Saber más</button>
     </div>
 </div>
+
+<?php if (isset($customJs)) : ?>
+    <?php if (gettype($customJs) == 'array') : ?>
+        <?php foreach ($customJs as $index => $row) : ?>
+            <?php $this->load->view('templates/' . $row) ?>
+        <?php endforeach ?>
+    <?php elseif (gettype($customJs) == 'string') : ?>
+        <?php $this->load->view('templates/' . $customJs) ?>
+    <?php endif ?>
+<?php endif ?>

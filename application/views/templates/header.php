@@ -46,6 +46,8 @@
     <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet" /> <!-- COLVIS -->
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Alpine JS -->
     <!-- <script defer src="https://unpkg.com/alpinejs@3.2.1/dist/cdn.min.js"></script> -->
 

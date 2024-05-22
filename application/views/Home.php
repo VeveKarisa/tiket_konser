@@ -3,8 +3,8 @@
         <div class="flex justify-between items-center py-28 px-10">
             <div class="w-1/2">
                 <h2 class="text-5xl font-bold text-yellow-300">Fast, Cheap, & Easy Concert Tickets Enjoy Music with No Hassle!</h2>
-                <h3 class="text-xl font-semibold text-gray-600 mt-4">Access easily without many obstacles when you book tickets here.</h3>
-                <button class="bg-purple-500 px-6 py-1 rounded-md mt-4 text-white hover:bg-purple-600">Daftar</button>
+                <h3 class="text-xl font-semibold text-gray-600 my-4">Access easily without many obstacles when you book tickets here.</h3>
+                <a href="<?= base_url('Auth/Register') ?>" class="bg-purple-500 px-4 py-1.5 rounded-md text-white hover:bg-purple-600">Register</a>
             </div>
             <div class="w-1/2 mb-0">
                 <img src="<?= base_url('assets/img/bg-1.png') ?>" alt="Imagen relacionada con el programa de fidelización" class="w-full h-auto">

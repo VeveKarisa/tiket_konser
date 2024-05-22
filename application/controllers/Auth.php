@@ -3,13 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+	}
+
 	public function index()
 	{
+		$data['customJs'] = 'sweetAlertJs';
+
 		if (!isset($_POST['submit'])) {
-			$this->load->view('templates/header');
-			$this->load->view('templates/navbar');
-			$this->load->view('Auth/index');
-			$this->load->view('templates/footer');
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar', $data);
+			$this->load->view('Auth/index', $data);
+			$this->load->view('templates/footer', $data);
 		} else {
 			$data = [
 				'email' => $this->input->post('email'),
@@ -27,25 +36,33 @@ class Auth extends CI_Controller
 						'level' => $employeeData['level'],
 						'user_data' => ['username' => $employeeData['username']],
 					]);
-					echo 'welcome to dashboard';
+					if ($employeeData['level'] == 3) {
+						redirect(base_url('Home'));
+					} else {
+						redirect(base_url('Admin'));
+					}
 				} else {
 					// WRONG PASSWORD
-					redirect(base_url('auth/'));
+					$this->session->set_flashdata('message', ['icon' => 'error', 'title' => 'Wrong Password', 'text' => 'Your password is wrong, try again']);
+					redirect(base_url('Auth'));
 				}
 			} else {
 				// NO EMAIL REGISTERED
-				redirect(base_url('auth/'));
+				$this->session->set_flashdata('message', ['icon' => 'error', 'title' => 'No email registered', 'text' => 'Register your email first']);
+				redirect(base_url('auth'));
 			}
 		}
 	}
 
 	public function Register()
 	{
+		$data['customJs'] = 'sweetAlertJs';
+
 		if (!isset($_POST['submit'])) {
-			$this->load->view('templates/header');
-			$this->load->view('templates/navbar');
-			$this->load->view('Auth/register');
-			$this->load->view('templates/footer');
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar', $data);
+			$this->load->view('Auth/register', $data);
+			$this->load->view('templates/footer', $data);
 		} else {
 			$data = [
 				'fullname' => $this->input->post('fullname'),
@@ -57,6 +74,7 @@ class Auth extends CI_Controller
 			];
 
 			$this->db->insert('user', $data);
+			$this->session->set_flashdata('message', ['icon' => 'success', 'title' => 'Account Registered', 'text' => 'Your account has been registered']);
 			redirect(base_url('auth/'));
 		}
 	}
