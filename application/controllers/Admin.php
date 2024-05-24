@@ -14,11 +14,15 @@ class Admin extends CI_Controller
 
     public function Konser()
     {
+        $this->load->model('main_model');
+
+        $data['concerts'] = $this->main_model->get_concert();
+
         if (!isset($_POST['submit'])) {
             $this->load->view('templates/header');
             $this->load->view('templates/navbar_admin');
             $this->load->view('templates/sidebar_admin');
-            $this->load->view('Admin/Konser');
+            $this->load->view('Admin/Konser', $data);
             $this->load->view('templates/footer_admin');
         } else {
             $flyer_img = array();
