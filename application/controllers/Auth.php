@@ -81,8 +81,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
-		$this->session->unset_userdata('access_token');
-		$this->session->unset_userdata('user_data');
+		$this->session->unset_userdata(['access_token', 'user_data']);
 		$this->session->sess_destroy();
 		redirect('Home');
 	}

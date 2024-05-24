@@ -30,12 +30,13 @@ class Admin extends CI_Controller
             $config['max_size'] = '200000'; // kb
             $this->load->library('upload', $config);
             $flyer_img = $this->upload->do_upload('flyer_img');
-            $seat_img = $this->upload->do_upload('seat_img');
 
             if ($flyer_img) {
                 $names_flyer = $this->upload->data();
             }
 
+            $this->upload->initialize($config);
+            $seat_img = $this->upload->do_upload('seat_img');
             if ($seat_img) {
                 $names_seat = $this->upload->data();
             }
