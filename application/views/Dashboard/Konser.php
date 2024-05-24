@@ -34,6 +34,10 @@
                                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type product name" required="">
                                     </div>
                                     <div class="col-span-2">
+                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                        <textarea name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type description here" required></textarea>
+                                    </div>
+                                    <div class=" col-span-2">
                                         <label for="venue" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Venue</label>
                                         <input type="text" name="venue" id="venue" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type venue name" required="">
                                     </div>
@@ -43,7 +47,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="flyer_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Flyer Upload <span class="text-sm text-red-500">*should in 1:1 size</span></label>
+                                    <label for="flyer_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Flyer Upload <span class="text-sm text-red-500">*should in portrait</span></label>
                                     <div class="flex items-center justify-center w-full">
                                         <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                                             <div class="h-full w-full text-center flex flex-col justify-center items-center  ">
@@ -52,7 +56,7 @@
                                                 </div>
                                                 <p class="pointer-none text-gray-500 ">Drag and drop files here from your computer</p>
                                             </div>
-                                            <input type="file" name="flyer_img" accept="image/*" class="">
+                                            <input type="file" name="flyer_img" accept="image/*" class="hidden">
                                         </label>
                                     </div>
                                     <p class="text-sm text-gray-500">
@@ -69,7 +73,7 @@
                                                 </div>
                                                 <p class="pointer-none text-gray-500 ">Drag and drop files here from your computer</p>
                                             </div>
-                                            <input type="file" name="seat_img" accept="image/*" class="">
+                                            <input type="file" name="seat_img" accept="image/*" class="hidden">
                                         </label>
                                     </div>
                                     <p class="text-sm text-gray-500">
@@ -107,33 +111,40 @@
                     </div>
                 </div>
 
-                <div class="p-4">
-                    <table class="border w-full">
-                        <thead class="border bg-purple-500 text-white">
-                            <tr>
-                                <th>Song</th>
-                                <th>Artist</th>
-                                <th>Year</th>
-                            </tr>
-                        </thead>
-                        <tbody class="border">
-                            <tr>
-                                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                <td>Malcolm Lockyer</td>
-                                <td>1961</td>
-                            </tr>
-                            <tr>
-                                <td>Witchy Woman</td>
-                                <td>The Eagles</td>
-                                <td>1972</td>
-                            </tr>
-                            <tr>
-                                <td>Shining Star</td>
-                                <td>Earth, Wind, and Fire</td>
-                                <td>1975</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class=" grid grid-cols-2 p-10 gap-10">
+                    <?php if (!empty($concerts)) : ?>
+                        <?php foreach ($concerts as $row) : ?>
+                            <a href="<?= base_url('Dashboard/konser/' . $row['id']) ?>" class="rounded overflow-hidden shadow-lg">
+                                <img class="w-full h-1/2 object-cover" src="<?= base_url('assets/img/Concert/' . $row['seat_img']) ?>" alt="Concert Image">
+                                <div class="px-6 py-4">
+                                    <div class="flex justify-between items-center">
+                                        <div class="font-bold text-xl justify-center items-center"><?= $row['name'] ?></div>
+                                        <div class="bg-purple-500 text-sm text-white rounded-md px-2 py-1 justify-center"><?= $row['date'] ?></div>
+                                    </div>
+                                    <p class="text-gray-700 text-base text-justify my-4"><?= $row['description'] ?></p>
+                                    <div class="flex items-center">
+                                        <svg fill="#bd0bef" height="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297 297" xml:space="preserve" stroke="#bd0bef">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path d="M148.5,0C87.43,0,37.747,49.703,37.747,110.797c0,91.026,99.729,179.905,103.976,183.645 c1.936,1.705,4.356,2.559,6.777,2.559c2.421,0,4.841-0.853,6.778-2.559c4.245-3.739,103.975-92.618,103.975-183.645 C259.253,49.703,209.57,0,148.5,0z M148.5,79.693c16.964,0,30.765,13.953,30.765,31.104c0,17.151-13.801,31.104-30.765,31.104 c-16.964,0-30.765-13.953-30.765-31.104C117.735,93.646,131.536,79.693,148.5,79.693z"></path>
+                                            </g>
+                                        </svg>
+                                        <?= $row['venue'] ?>
+                                    </div>
+                                    <div>
+                                        <?php foreach ($seatByConcerts as $row) : ?>
+                                            <div>
+                                                <?= $row['type'] ?>
+                                            </div>
+                                        <?php endforeach ?>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <p class="p-4">No concerts found</p>
+                    <?php endif; ?>
                 </div>
             </main>
         </div>

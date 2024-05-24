@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Dashboard extends CI_Controller
 {
     public function index()
     {
         $this->load->view('templates/header');
         $this->load->view('templates/navbar_admin');
         $this->load->view('templates/sidebar_admin');
-        $this->load->view('Admin/Dashboard');
+        $this->load->view('Dashboard/Index');
         $this->load->view('templates/footer_admin');
     }
 
@@ -17,12 +17,13 @@ class Admin extends CI_Controller
         $this->load->model('main_model');
 
         $data['concerts'] = $this->main_model->get_concert();
+        $data['seatByConcerts'] = $this->main_model->seatByConcert();
 
         if (!isset($_POST['submit'])) {
             $this->load->view('templates/header');
             $this->load->view('templates/navbar_admin');
             $this->load->view('templates/sidebar_admin');
-            $this->load->view('Admin/Konser', $data);
+            $this->load->view('Dashboard/Konser', $data);
             $this->load->view('templates/footer_admin');
         } else {
             $config['upload_path'] = './assets/img/Concert/';
@@ -76,7 +77,7 @@ class Admin extends CI_Controller
             }
 
             $this->db->insert_batch('seat', $seatData);
-            redirect(base_url('admin/konser'));
+            redirect(base_url('Dashboard/Konser'));
         }
     }
 }
