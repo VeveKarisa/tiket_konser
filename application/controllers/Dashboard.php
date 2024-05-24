@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Main_model');
+    }
     public function index()
     {
         $this->load->view('templates/header');
@@ -14,10 +20,7 @@ class Dashboard extends CI_Controller
 
     public function Konser()
     {
-        $this->load->model('main_model');
-
-        $data['concerts'] = $this->main_model->get_concert();
-        $data['seatByConcerts'] = $this->main_model->seatByConcert();
+        $data['concerts'] = $this->Main_model->get_concert();
 
         if (!isset($_POST['submit'])) {
             $this->load->view('templates/header');

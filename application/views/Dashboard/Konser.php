@@ -132,10 +132,12 @@
                                         </svg>
                                         <?= $row['venue'] ?>
                                     </div>
-                                    <div>
-                                        <?php foreach ($seatByConcerts as $row) : ?>
-                                            <div>
-                                                <?= $row['type'] ?>
+                                    <div class="flex gap-4">
+                                        <?php foreach (getTypeSeatByConcertId($row['id']) as $row) : ?>
+                                            <div class="p-2 bg-blue-300">
+                                                <p><?= $row['type'] ?> : Rp. <span><?= $row['price'] ?></span></p>
+                                                <p>Total Seats: <span><?= $row['total'] ?></span></p>
+                                                <p>Available Seats: <span><?= seatAvailable($row['concert_id'], $row['type'])['available_seats'] ?></span></p>
                                             </div>
                                         <?php endforeach ?>
                                     </div>
@@ -150,6 +152,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     function addSeatPricelist() {
