@@ -21,32 +21,36 @@ class Admin extends CI_Controller
             $this->load->view('Admin/Konser');
             $this->load->view('templates/footer_admin');
         } else {
-            $flyer_img = array();
-            $seat_img = array();
             $config['upload_path'] = './assets/img/Concert/';
             $config['allowed_types'] = 'gif|jpg|png|ico|jpeg';
             $config['max_size'] = '200000'; // kb
             $this->load->library('upload', $config);
-            $this->upload->do_upload();
-            $data = $this->upload->data();
-            $flyer_img[] = $_FILES['flyer_img']['name'];
-            $seat_img[] = $_FILES['seat_img']['name'];
-            $names_flyer = implode('/', $flyer_img);
-            $names_seat = implode('/', $seat_img);
+            $flyer_img = $this->upload->do_upload('flyer_img');
+            $seat_img = $this->upload->do_upload('seat_img');
 
-            if ($names_flyer !== '' && $names_seat !== '') {
+            if ($flyer_img) {
+                $names_flyer = $this->upload->data();
+            }
+
+            if ($seat_img) {
+                $names_seat = $this->upload->data();
+            }
+
+            if (isset($names_flyer) && isset($names_seat)) {
                 $data = [
                     'name' => $this->input->post('name'),
+                    'description' => $this->input->post('description'),
                     'venue' => $this->input->post('venue'),
                     'date' => $this->input->post('date'),
-                    'flyer_img' => str_replace(" ", "_", $names_flyer),
-                    'seat_img' => str_replace(" ", "_", $names_seat),
+                    'flyer_img' => $names_flyer['file_name'],
+                    'seat_img' => $names_seat['file_name'],
                     'bank_name' => $this->input->post('bank_name'),
                     'bank_number' => $this->input->post('bank_number'),
                 ];
             } else {
                 $data = [
                     'name' => $this->input->post('name'),
+                    'description' => $this->input->post('description'),
                     'venue' => $this->input->post('venue'),
                     'date' => $this->input->post('date'),
                     'bank_name' => $this->input->post('bank_name'),
