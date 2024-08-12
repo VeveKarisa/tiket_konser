@@ -75,7 +75,7 @@
     <!-- Right Pane -->
     <div class="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
         <div class="max-w-md w-full p-6">
-            <h1 class="text-3xl font-semibold mb-6 text-black text-center">Login</h1>
+            <h1 class="text-3xl font-semibold mb-6 text-black text-center">Login Yuk</h1>
             <form action="#" method="POST" class="space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
